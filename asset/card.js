@@ -23,7 +23,7 @@ function afficherTableau() {
     for (var j = 0; j < tabJeu[i].length; j++) {
       if (tabJeu[i][j] === 0) {
         txt +=
-          "<button class='btn btn-primary m-2' style='width:100px;height:100px' onClick='verif(\"" +
+          "<button class='btn btn-primary m-2 small game-card' onClick='verif(\"" +
           i +
           "-" +
           j +
@@ -32,7 +32,7 @@ function afficherTableau() {
         txt +=
           "<img src='" +
           getImage(tabJeu[i][j]) +
-          "' style='width:100px;height:100px' class='m-2'>";
+          "'  class='m-2 img-size'>";
       }
     }
     txt += "</div>";

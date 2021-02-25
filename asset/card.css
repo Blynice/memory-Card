@@ -21,7 +21,6 @@ h1{
   background: #12c2e9;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  
 }
 .container {
   margin-top: 80px;
@@ -30,6 +29,15 @@ h1{
   max-width: 700px;
   border: 10px dotted purple;
 }
+.game-card{
+  width:100px;
+  height:100px;
+}
+.img-size{
+  width:100px;
+  height:100px;
+}
+
 .col-sm {
   margin: 10px;
   height: 230px;
@@ -53,16 +61,28 @@ input{
   font-family: 'Fredericka the Great', cursive;
   padding: 30px;
 }
-@media (max-width: 575.98px) { 
+@media (min-width: 320px) and (max-width: 480px) { 
+  body{
+    height: 110vh;
+  
+  }
 .container{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   border: none;
+}
+.game-card{
+  width:70px;
+  height: 70px;
+}
+.img-size{
+  width:70px;
+  height:70px;
+}
+.move{
+  display: flex;
+  flex-direction: column;
+}
 
-}
-button.btn-primary{
-  width: 250px!important;
-  height: 250px!important;
-}
 }

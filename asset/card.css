@@ -64,9 +64,8 @@ input{
 @media (min-width: 320px) and (max-width: 480px) { 
   body{
     height: 110vh;
-  
   }
-.container{
+  .container{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

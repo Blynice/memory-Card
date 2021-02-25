@@ -1,0 +1,88 @@
+body {
+  background-image: url("../asset/image/mountain-river.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #cccccc;
+}
+h1{
+  font-family: 'Fredericka the Great', cursive;
+  font-size: 70px;
+  margin-top: 10px;
+  color:#1e2b11;
+}
+.btn-primary {
+  background: #12c2e9;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+}
+.btn-primary:hover {
+  transform: scale(1.1);
+  background: #12c2e9;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.container {
+  margin-top: 80px;
+  padding:5px;
+  display: flex;
+  max-width: 700px;
+  border: 10px dotted purple;
+}
+.game-card{
+  width:100px;
+  height:100px;
+}
+.img-size{
+  width:100px;
+  height:100px;
+}
+
+.col-sm {
+  margin: 10px;
+  height: 230px;
+  color: aliceblue;
+}
+
+.move {
+  width: 40%;
+  margin: auto;
+  margin-top: 10px;
+  display: flex;
+  padding: 10px;
+  background: #7CB342;
+  color: white;
+}
+span {
+  text-align: center;
+  margin: auto;
+}
+input{
+  font-family: 'Fredericka the Great', cursive;
+  padding: 30px;
+}
+@media (min-width: 320px) and (max-width: 480px) { 
+  body{
+    height: 110vh;
+  
+  }
+.container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border: none;
+}
+.game-card{
+  width:70px;
+  height: 70px;
+}
+.img-size{
+  width:70px;
+  height:70px;
+}
+.move{
+  display: flex;
+  flex-direction: column;
+}
+
+}

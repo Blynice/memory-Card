@@ -12,10 +12,12 @@ let tabResult = genereTableauAleatoire();
 let oldSelection = [];
 let nbAffiche = 0;
 let ready = true;
-let moves = 0;
+let moves = 0; // Initialisation avec une valeur par défaut
 const maxMoves = 20; // Nombre maximal de tours avant de bloquer le jeu
 
 afficherTableau();
+
+
 function genereTableauAleatoire() {
   moves = 0;
   updateCounter();

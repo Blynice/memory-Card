@@ -7,20 +7,13 @@ let tabJeu = [
   [0, 0, 0, 0],
   [0, 0, 0, 0],
 ];
-
-let tabResult = genereTableauAleatoire();
-let oldSelection = [];
-let nbAffiche = 0;
-let ready = true;
-var moves = 0; // Initialisation avec une valeur par défaut
-const maxMoves = 20; // Nombre maximal de tours avant de bloquer le jeu
-
-afficherTableau();
-
-
 function genereTableauAleatoire() {
   moves = 0;
   updateCounter();
+
+
+
+
 
   const tab = [];
   const nbImagePosition = [0, 0, 0, 0, 0, 0, 0, 0];
@@ -144,4 +137,11 @@ function endGame() {
   alert("Jeu terminé ! Vous avez atteint le nombre maximal de tours.");
   // Vous pouvez ajouter d'autres actions en fonction de vos besoins.
 }
+let tabResult = genereTableauAleatoire();
+let oldSelection = [];
+let nbAffiche = 0;
+let ready = true;
+var moves = 0; // Initialisation avec une valeur par défaut
+const maxMoves = 20; // Nombre maximal de tours avant de bloquer le jeu
 
+afficherTableau();

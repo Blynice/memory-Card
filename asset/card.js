@@ -107,11 +107,6 @@ function verif(bouton) {
     }
   }
 }
-
-function updateCounter() {
-  counterElement.innerHTML = moves;
-}
-
 function genereTableauAleatoire() {
   moves = 0;
   updateCounter();
@@ -135,6 +130,9 @@ function genereTableauAleatoire() {
     tab.push(ligne);
   }
   return tab;
+}
+function updateCounter() {
+  counterElement.innerHTML = moves;
 }
 
 function endGame() {

@@ -40,6 +40,8 @@ function genereTableauAleatoire() {
   }
   return tab;
 }
+
+
 function afficherTableau() {
   let txt = "";
 

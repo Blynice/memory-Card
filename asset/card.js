@@ -1,6 +1,29 @@
 const divResult = document.querySelector("#result");
 const counterElement = document.querySelector(".counter");
+function genereTableauAleatoire() {
+  moves = 0;
+  updateCounter();
 
+  const tab = [];
+  const nbImagePosition = [0, 0, 0, 0, 0, 0, 0, 0];
+
+  for (let i = 0; i < 4; i++) {
+    const ligne = [];
+    for (let j = 0; j < 4; j++) {
+      let fin = false;
+      while (!fin) {
+        const randomImage = Math.floor(Math.random() * 8);
+        if (nbImagePosition[randomImage] < 2) {
+          ligne.push(randomImage + 1);
+          nbImagePosition[randomImage]++;
+          fin = true;
+        }
+      }
+    }
+    tab.push(ligne);
+  }
+  return tab;
+}
 let tabJeu = [
   [0, 0, 0, 0],
   [0, 0, 0, 0],
@@ -107,30 +130,7 @@ function verif(bouton) {
     }
   }
 }
-function genereTableauAleatoire() {
-  moves = 0;
-  updateCounter();
 
-  const tab = [];
-  const nbImagePosition = [0, 0, 0, 0, 0, 0, 0, 0];
-
-  for (let i = 0; i < 4; i++) {
-    const ligne = [];
-    for (let j = 0; j < 4; j++) {
-      let fin = false;
-      while (!fin) {
-        const randomImage = Math.floor(Math.random() * 8);
-        if (nbImagePosition[randomImage] < 2) {
-          ligne.push(randomImage + 1);
-          nbImagePosition[randomImage]++;
-          fin = true;
-        }
-      }
-    }
-    tab.push(ligne);
-  }
-  return tab;
-}
 function updateCounter() {
   counterElement.innerHTML = moves;
 }

@@ -1,38 +1,34 @@
 const divResult = document.querySelector("#result");
+const counterElement = document.querySelector(".counter");
 
-var tabJeu = [
+let tabJeu = [
   [0, 0, 0, 0],
   [0, 0, 0, 0],
   [0, 0, 0, 0],
   [0, 0, 0, 0],
 ];
 
-var tabResult = genereTableauAleatoire();
-
-var oldSelection = [];
-var nbAffiche = 0;
-var ready = true;
+let tabResult = genereTableauAleatoire();
+let oldSelection = [];
+let nbAffiche = 0;
+let ready = true;
+let moves = 0;
+const maxMoves = 20; // Nombre maximal de tours avant de bloquer le jeu
 
 afficherTableau();
 
 function afficherTableau() {
-  var txt = "";
+  let txt = "";
 
-  for (var i = 0; i < tabJeu.length; i++) {
+  for (let i = 0; i < tabJeu.length; i++) {
     txt += "<div>";
-    for (var j = 0; j < tabJeu[i].length; j++) {
+    for (let j = 0; j < tabJeu[i].length; j++) {
       if (tabJeu[i][j] === 0) {
         txt +=
-          "<button class='btn btn-primary m-2 small game-card' onClick='verif(\"" +
-          i +
-          "-" +
-          j +
-          "\")'></button>";
+          `<button class='btn btn-primary m-2 small game-card' onClick='verif("${i}-${j}")'></button>`;
       } else {
         txt +=
-          "<img src='" +
-          getImage(tabJeu[i][j]) +
-          "'  class='m-2 img-size'>";
+          `<img src='${getImage(tabJeu[i][j])}' class='m-2 img-size'>`;
       }
     }
     txt += "</div>";
@@ -42,7 +38,7 @@ function afficherTableau() {
 }
 
 function getImage(valeur) {
-  var imgTxt = "asset/image/";
+  let imgTxt = "asset/image/";
   switch (valeur) {
     case 1:
       imgTxt += "elephant.png";
@@ -74,14 +70,12 @@ function getImage(valeur) {
   return imgTxt;
 }
 
-var moves = 0;
-
 function verif(bouton) {
   if (ready) {
     nbAffiche++;
 
-    var ligne = bouton.substr(0, 1);
-    var colonne = bouton.substr(2, 1);
+    const ligne = bouton.substr(0, 1);
+    const colonne = bouton.substr(2, 1);
 
     tabJeu[ligne][colonne] = tabResult[ligne][colonne];
     afficherTableau();
@@ -89,7 +83,7 @@ function verif(bouton) {
     if (nbAffiche > 1) {
       ready = false;
       setTimeout(() => {
-        //verification
+        // Vérification
         if (
           tabJeu[ligne][colonne] !== tabJeu[oldSelection[0]][oldSelection[1]]
         ) {
@@ -98,9 +92,13 @@ function verif(bouton) {
         }
         afficherTableau();
         ready = true;
-        const counter = document.querySelector(".counter");
         moves++;
-        counter.innerHTML = moves;
+        updateCounter();
+
+        if (moves >= maxMoves) {
+          endGame();
+        }
+
         nbAffiche = 0;
         oldSelection = [ligne, colonne];
       }, 500);
@@ -110,19 +108,23 @@ function verif(bouton) {
   }
 }
 
-function genereTableauAleatoire() {
-  const counter = document.querySelector(".counter");
-  var tab = [];
-  moves = 0;
-  counter.innerHTML = "0";
-  var nbImagePosition = [0, 0, 0, 0, 0, 0, 0, 0];
+function updateCounter() {
+  counterElement.innerHTML = moves;
+}
 
-  for (var i = 0; i < 4; i++) {
-    var ligne = [];
-    for (var j = 0; j < 4; j++) {
-      var fin = false;
+function genereTableauAleatoire() {
+  moves = 0;
+  updateCounter();
+
+  const tab = [];
+  const nbImagePosition = [0, 0, 0, 0, 0, 0, 0, 0];
+
+  for (let i = 0; i < 4; i++) {
+    const ligne = [];
+    for (let j = 0; j < 4; j++) {
+      let fin = false;
       while (!fin) {
-        var randomImage = Math.floor(Math.random() * 8);
+        const randomImage = Math.floor(Math.random() * 8);
         if (nbImagePosition[randomImage] < 2) {
           ligne.push(randomImage + 1);
           nbImagePosition[randomImage]++;
@@ -134,3 +136,10 @@ function genereTableauAleatoire() {
   }
   return tab;
 }
+
+function endGame() {
+  // Bloquer le jeu, afficher une popup, etc.
+  alert("Jeu terminé ! Vous avez atteint le nombre maximal de tours.");
+  // Vous pouvez ajouter d'autres actions en fonction de vos besoins.
+}
+
